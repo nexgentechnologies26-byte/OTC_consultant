@@ -1,0 +1,76 @@
+<section class="page-hero">
+  <div class="container">
+    <span class="eyebrow reveal">Contact Us</span>
+    <h1 class="reveal">Tell us where you want to go</h1>
+    <p class="section-sub reveal">Fill in the form and a counselor will reply within one working day.</p>
+  </div>
+</section>
+
+<section class="contact-section">
+  <div class="container contact-grid">
+    <div class="contact-form-wrap reveal">
+      <% if (typeof success !== 'undefined' && success) { %>
+        <div class="alert alert-success">Thanks &mdash; your message is in. We'll be in touch within one working day.</div>
+      <% } %>
+      <% if (typeof formError !== 'undefined' && formError) { %>
+        <div class="alert alert-error"><%= formError %></div>
+      <% } %>
+
+      <form action="/contact" method="POST" class="contact-form">
+        <div class="form-row">
+          <label for="name">Full name</label>
+          <input type="text" id="name" name="name" required value="<%= typeof formValues !== 'undefined' ? formValues.name || '' : '' %>">
+        </div>
+        <div class="form-row form-row-split">
+          <div>
+            <label for="email">Email</label>
+            <input type="email" id="email" name="email" required value="<%= typeof formValues !== 'undefined' ? formValues.email || '' : '' %>">
+          </div>
+          <div>
+            <label for="phone">Phone (optional)</label>
+            <input type="tel" id="phone" name="phone" value="<%= typeof formValues !== 'undefined' ? formValues.phone || '' : '' %>">
+          </div>
+        </div>
+        <div class="form-row">
+          <label for="interest">What are you interested in?</label>
+          <select id="interest" name="interest">
+            <option value="University selection">University & course selection</option>
+            <option value="Application support">Application & SOP support</option>
+            <option value="Test preparation">Test preparation</option>
+            <option value="Visa filing">Visa filing & interviews</option>
+            <option value="Scholarships">Scholarship guidance</option>
+            <option value="Not sure yet">Not sure yet</option>
+          </select>
+        </div>
+        <div class="form-row">
+          <label for="message">Message</label>
+          <textarea id="message" name="message" rows="5" required><%= typeof formValues !== 'undefined' ? formValues.message || '' : '' %></textarea>
+        </div>
+        <button type="submit" class="btn btn-primary btn-lg">Send Message</button>
+      </form>
+    </div>
+
+    <div class="contact-details reveal">
+      <div class="contact-card">
+        <h3>Visit us</h3>
+        <p><%= data.contact.address %></p>
+      </div>
+      <div class="contact-card">
+        <h3>Call or message</h3>
+        <p><a href="tel:<%= data.contact.phone.replace(/\s/g,'') %>"><%= data.contact.phone %></a></p>
+        <p><a href="https://wa.me/<%= data.contact.whatsapp.replace(/[^\d]/g,'') %>" target="_blank" rel="noopener">WhatsApp: <%= data.contact.whatsapp %></a></p>
+      </div>
+      <div class="contact-card">
+        <h3>Email</h3>
+        <p><a href="mailto:<%= data.contact.email %>"><%= data.contact.email %></a></p>
+      </div>
+      <div class="contact-card">
+        <h3>Office hours</h3>
+        <p><%= data.contact.officeHours %></p>
+      </div>
+      <div class="map-embed">
+        <iframe src="<%= data.contact.mapEmbedUrl %>" width="100%" height="220" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade" title="Office location map"></iframe>
+      </div>
+    </div>
+  </div>
+</section>

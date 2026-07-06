@@ -1,0 +1,92 @@
+<section class="page-hero">
+  <div class="container">
+    <span class="eyebrow reveal">About Us</span>
+    <h1 class="reveal"><%= data.about.heading %></h1>
+  </div>
+</section>
+
+<section class="about-story">
+  <div class="container about-story-grid">
+    <div class="reveal">
+      <h2 class="section-heading">Our story</h2>
+      <p><%= data.about.story %></p>
+    </div>
+    <div class="mission-box reveal">
+      <span class="eyebrow">Our mission</span>
+      <p><%= data.about.mission %></p>
+    </div>
+  </div>
+  <div class="container about-photo-strip reveal">
+    <img src="https://loremflickr.com/380/280/consultation,office?lock=105" alt="Consultation session with a student" loading="lazy">
+    <img src="https://loremflickr.com/380/280/student,documents?lock=106" alt="Student reviewing university offer letters" loading="lazy">
+    <img src="https://loremflickr.com/380/280/graduation,cap?lock=107" alt="Graduation day for a placed student" loading="lazy">
+  </div>
+</section>
+
+<section class="globe-section">
+  <div class="container globe-wrap">
+    <div class="globe-illustration reveal">
+      <svg viewBox="0 0 360 360" fill="none" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Illustration of a globe with connected study destinations">
+        <circle cx="180" cy="180" r="140" stroke="var(--border)" stroke-width="2"/>
+        <ellipse cx="180" cy="180" rx="140" ry="46" stroke="var(--border)" stroke-width="1.5"/>
+        <ellipse cx="180" cy="180" rx="140" ry="90" stroke="var(--border)" stroke-width="1.5"/>
+        <line x1="40" y1="180" x2="320" y2="180" stroke="var(--border)" stroke-width="1.5"/>
+        <ellipse cx="180" cy="180" rx="46" ry="140" stroke="var(--border)" stroke-width="1.2"/>
+        <line x1="180" y1="40" x2="180" y2="320" stroke="var(--border)" stroke-width="1.2"/>
+
+        <path d="M90,140 Q180,90 270,150" stroke="var(--coral)" stroke-width="2" class="dash-flow" fill="none" stroke-linecap="round"/>
+        <path d="M100,230 Q180,270 250,210" stroke="var(--forest-light)" stroke-width="2" class="dash-flow" fill="none" stroke-linecap="round" style="animation-delay:0.5s"/>
+
+        <circle cx="90" cy="140" r="7" fill="var(--forest)" class="floaty"/>
+        <circle cx="270" cy="150" r="7" fill="var(--coral)" class="floaty-delay"/>
+        <circle cx="100" cy="230" r="6" fill="var(--gold-soft)" class="floaty-delay"/>
+        <circle cx="250" cy="210" r="7" fill="var(--forest)" class="floaty"/>
+        <circle cx="180" cy="95" r="5" fill="var(--coral)" class="pulse-dot"/>
+      </svg>
+    </div>
+    <div class="globe-copy reveal">
+      <span class="eyebrow">Where our students go</span>
+      <h2>Real placements across <%= data.about.countriesCovered %> countries</h2>
+      <p>From first-time undergraduates to working professionals chasing an MBA, we've mapped out routes to universities across the UK, Canada, the US, Australia, and mainland Europe &mdash; and we keep that map updated as intake rules change.</p>
+      <a href="/services" class="link-arrow">See how we plan a route &rarr;</a>
+    </div>
+  </div>
+</section>
+
+<section class="stats-strip reveal">
+  <div class="container stats-grid">
+    <div><strong class="count-up" data-count-target="<%= data.about.studentsPlaced %>" data-suffix="+">0</strong><span>Students placed</span></div>
+    <div><strong class="count-up" data-count-target="<%= data.about.partnerUniversities %>" data-suffix="+">0</strong><span>Partner universities</span></div>
+    <div><strong class="count-up" data-count-target="<%= data.about.countriesCovered %>" data-suffix="">0</strong><span>Countries covered</span></div>
+    <div><strong class="count-up" data-count-target="<%= data.about.visaSuccessRate %>" data-suffix="%">0</strong><span>Visa success rate</span></div>
+  </div>
+</section>
+
+<section class="team-section">
+  <div class="container">
+    <h2 class="section-heading reveal">Who you'll actually talk to</h2>
+    <p class="section-sub reveal">A small, senior team &mdash; you won't be handed off to someone new each visit.</p>
+    <div class="team-grid">
+      <% data.about.team.forEach((member, i) => { %>
+        <div class="team-card reveal">
+          <div class="team-avatar">
+            <img src="https://loremflickr.com/160/160/portrait,professional?lock=<%= 200 + i %>" alt="<%= member.name %>" loading="lazy">
+          </div>
+          <h3><%= member.name %></h3>
+          <span class="team-role"><%= member.role %></span>
+          <p><%= member.bio %></p>
+        </div>
+      <% }) %>
+    </div>
+  </div>
+</section>
+
+<section class="cta-band reveal">
+  <div class="container cta-band-inner">
+    <div>
+      <h2>Want to meet the team?</h2>
+      <p>Book a free consultation and we'll match you with the right counselor.</p>
+    </div>
+    <a href="/contact" class="btn btn-primary btn-lg">Get in Touch</a>
+  </div>
+</section>

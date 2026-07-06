@@ -1,0 +1,254 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title><%= title %></title>
+  <link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,500;9..144,700&family=Work+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="/css/style.css">
+</head>
+<body class="admin-body">
+  <div class="admin-shell">
+    <aside class="admin-sidebar">
+      <div class="brand admin-login-brand">
+        <span class="brand-mark">PS</span>
+        <span class="brand-name">Admin Panel</span>
+      </div>
+      <nav class="admin-nav">
+        <a href="/admin?tab=contact" class="<%= tab === 'contact' ? 'active' : '' %>">Contact Details</a>
+        <a href="/admin?tab=brand" class="<%= tab === 'brand' ? 'active' : '' %>">Brand & Tagline</a>
+        <a href="/admin?tab=about" class="<%= tab === 'about' ? 'active' : '' %>">About & Stats</a>
+        <a href="/admin?tab=team" class="<%= tab === 'team' ? 'active' : '' %>">Team Members</a>
+        <a href="/admin?tab=services" class="<%= tab === 'services' ? 'active' : '' %>">Services</a>
+        <a href="/admin?tab=process" class="<%= tab === 'process' ? 'active' : '' %>">Process Steps</a>
+        <a href="/admin?tab=testimonials" class="<%= tab === 'testimonials' ? 'active' : '' %>">Testimonials</a>
+        <a href="/admin?tab=messages" class="<%= tab === 'messages' ? 'active' : '' %>">
+          Messages
+          <% if (unreadCount > 0) { %><span class="badge"><%= unreadCount %></span><% } %>
+        </a>
+        <a href="/admin?tab=settings" class="<%= tab === 'settings' ? 'active' : '' %>">Settings</a>
+      </nav>
+      <div class="admin-sidebar-footer">
+        <a href="/" class="link-arrow" target="_blank">View site &rarr;</a>
+        <form action="/admin/logout" method="POST">
+          <button type="submit" class="btn btn-ghost btn-sm" style="width:100%">Log out</button>
+        </form>
+      </div>
+    </aside>
+
+    <main class="admin-main">
+      <% if (success && success.length) { %><div class="alert alert-success"><%= success[0] %></div><% } %>
+      <% if (error && error.length) { %><div class="alert alert-error"><%= error[0] %></div><% } %>
+
+      <% if (tab === 'contact') { %>
+        <h1>Contact Details</h1>
+        <p class="section-sub">This information appears in the header, footer, and Contact Us page.</p>
+        <form action="/admin/update/contact" method="POST" class="admin-form">
+          <div class="form-row"><label>Phone</label><input type="text" name="phone" value="<%= data.contact.phone %>"></div>
+          <div class="form-row"><label>WhatsApp Number</label><input type="text" name="whatsapp" value="<%= data.contact.whatsapp %>"></div>
+          <div class="form-row"><label>Email</label><input type="email" name="email" value="<%= data.contact.email %>"></div>
+          <div class="form-row"><label>Address</label><textarea name="address" rows="2"><%= data.contact.address %></textarea></div>
+          <div class="form-row"><label>Office Hours</label><input type="text" name="officeHours" value="<%= data.contact.officeHours %>"></div>
+          <div class="form-row"><label>Google Maps Embed URL</label><input type="text" name="mapEmbedUrl" value="<%= data.contact.mapEmbedUrl %>"></div>
+          <div class="form-row-split-2">
+            <div class="form-row"><label>Facebook URL</label><input type="text" name="facebook" value="<%= data.contact.facebook %>"></div>
+            <div class="form-row"><label>Instagram URL</label><input type="text" name="instagram" value="<%= data.contact.instagram %>"></div>
+            <div class="form-row"><label>LinkedIn URL</label><input type="text" name="linkedin" value="<%= data.contact.linkedin %>"></div>
+          </div>
+          <button type="submit" class="btn btn-primary">Save Changes</button>
+        </form>
+      <% } %>
+
+      <% if (tab === 'brand') { %>
+        <h1>Brand & Tagline</h1>
+        <p class="section-sub">The institute name and tagline shown across the site.</p>
+        <form action="/admin/update/brand" method="POST" class="admin-form">
+          <div class="form-row"><label>Institute Name</label><input type="text" name="name" value="<%= data.brand.name %>"></div>
+          <div class="form-row"><label>Tagline</label><input type="text" name="tagline" value="<%= data.brand.tagline %>"></div>
+          <div class="form-row"><label>Logo Initials (2-3 letters)</label><input type="text" name="logoInitials" maxlength="3" value="<%= data.brand.logoInitials %>"></div>
+          <button type="submit" class="btn btn-primary">Save Changes</button>
+        </form>
+
+        <div class="admin-form">
+          <h3>Logo</h3>
+          <p class="section-sub">Upload an image logo to replace the initials shown in the header and footer. PNG, JPG, SVG, or WEBP, up to 2MB.</p>
+          <div class="logo-preview-row">
+            <div class="logo-preview-box">
+              <% if (data.brand.logoUrl) { %>
+                <img src="<%= data.brand.logoUrl %>" alt="Current logo">
+              <% } else { %>
+                <span class="brand-mark"><%= data.brand.logoInitials %></span>
+              <% } %>
+            </div>
+            <span class="empty-state"><%= data.brand.logoUrl ? 'Custom logo active' : 'Using initials (no logo uploaded)' %></span>
+          </div>
+          <form action="/admin/update/logo" method="POST" enctype="multipart/form-data" class="logo-upload-form">
+            <div class="form-row">
+              <label>Choose Image</label>
+              <input type="file" name="logo" accept="image/png,image/jpeg,image/svg+xml,image/webp" required>
+            </div>
+            <div class="logo-upload-actions">
+              <button type="submit" class="btn btn-primary btn-sm">Upload Logo</button>
+              <% if (data.brand.logoUrl) { %>
+                <button type="submit" formaction="/admin/remove/logo" formnovalidate class="btn btn-danger btn-sm">Remove Logo</button>
+              <% } %>
+            </div>
+          </form>
+        </div>
+      <% } %>
+
+      <% if (tab === 'about') { %>
+        <h1>About & Stats</h1>
+        <p class="section-sub">Story, mission, and the numbers shown on the homepage and About page.</p>
+        <form action="/admin/update/about" method="POST" class="admin-form">
+          <div class="form-row"><label>About Page Heading</label><input type="text" name="heading" value="<%= data.about.heading %>"></div>
+          <div class="form-row"><label>Our Story</label><textarea name="story" rows="4"><%= data.about.story %></textarea></div>
+          <div class="form-row"><label>Mission Statement</label><textarea name="mission" rows="3"><%= data.about.mission %></textarea></div>
+          <div class="form-row-split-2">
+            <div class="form-row"><label>Year Founded</label><input type="number" name="yearFounded" value="<%= data.about.yearFounded %>"></div>
+            <div class="form-row"><label>Students Placed</label><input type="number" name="studentsPlaced" value="<%= data.about.studentsPlaced %>"></div>
+            <div class="form-row"><label>Partner Universities</label><input type="number" name="partnerUniversities" value="<%= data.about.partnerUniversities %>"></div>
+          </div>
+          <div class="form-row-split-2">
+            <div class="form-row"><label>Countries Covered</label><input type="number" name="countriesCovered" value="<%= data.about.countriesCovered %>"></div>
+            <div class="form-row"><label>Visa Success Rate (%)</label><input type="number" name="visaSuccessRate" value="<%= data.about.visaSuccessRate %>"></div>
+          </div>
+          <button type="submit" class="btn btn-primary">Save Changes</button>
+        </form>
+      <% } %>
+
+      <% if (tab === 'team') { %>
+        <h1>Team Members</h1>
+        <p class="section-sub">Shown on the About Us page.</p>
+        <% data.about.team.forEach((member, i) => { %>
+          <form action="/admin/update/team/<%= i %>" method="POST" class="admin-form admin-card">
+            <div class="form-row-split-2">
+              <div class="form-row"><label>Name</label><input type="text" name="name" value="<%= member.name %>"></div>
+              <div class="form-row"><label>Role</label><input type="text" name="role" value="<%= member.role %>"></div>
+            </div>
+            <div class="form-row"><label>Bio</label><textarea name="bio" rows="2"><%= member.bio %></textarea></div>
+            <div class="admin-card-actions">
+              <button type="submit" class="btn btn-primary btn-sm">Save</button>
+            </div>
+          </form>
+          <form action="/admin/team/delete/<%= i %>" method="POST" class="admin-card-delete">
+            <button type="submit" class="btn btn-danger btn-sm" onclick="return confirm('Remove this team member?')">Remove</button>
+          </form>
+        <% }) %>
+        <form action="/admin/team/add" method="POST">
+          <button type="submit" class="btn btn-ghost">+ Add Team Member</button>
+        </form>
+      <% } %>
+
+      <% if (tab === 'services') { %>
+        <h1>Services</h1>
+        <p class="section-sub">Shown on the homepage and Services page. Icon options: compass, document, book, passport, award, plane.</p>
+        <% data.services.forEach((service, i) => { %>
+          <form action="/admin/update/service/<%= i %>" method="POST" class="admin-form admin-card">
+            <div class="form-row-split-2">
+              <div class="form-row"><label>Title</label><input type="text" name="title" value="<%= service.title %>"></div>
+              <div class="form-row"><label>Icon</label>
+                <select name="icon">
+                  <% ['compass','document','book','passport','award','plane'].forEach(ic => { %>
+                    <option value="<%= ic %>" <%= service.icon === ic ? 'selected' : '' %>><%= ic %></option>
+                  <% }) %>
+                </select>
+              </div>
+            </div>
+            <div class="form-row"><label>Description</label><textarea name="description" rows="2"><%= service.description %></textarea></div>
+            <div class="admin-card-actions">
+              <button type="submit" class="btn btn-primary btn-sm">Save</button>
+            </div>
+          </form>
+          <form action="/admin/service/delete/<%= i %>" method="POST" class="admin-card-delete">
+            <button type="submit" class="btn btn-danger btn-sm" onclick="return confirm('Remove this service?')">Remove</button>
+          </form>
+        <% }) %>
+        <form action="/admin/service/add" method="POST">
+          <button type="submit" class="btn btn-ghost">+ Add Service</button>
+        </form>
+      <% } %>
+
+      <% if (tab === 'process') { %>
+        <h1>Process Steps</h1>
+        <p class="section-sub">The 5-step pathway shown on the homepage and Services page.</p>
+        <% data.process.forEach((step, i) => { %>
+          <form action="/admin/update/process/<%= i %>" method="POST" class="admin-form admin-card">
+            <div class="form-row"><label>Step Name</label><input type="text" name="step" value="<%= step.step %>"></div>
+            <div class="form-row"><label>Detail</label><textarea name="detail" rows="2"><%= step.detail %></textarea></div>
+            <div class="admin-card-actions">
+              <button type="submit" class="btn btn-primary btn-sm">Save</button>
+            </div>
+          </form>
+        <% }) %>
+      <% } %>
+
+      <% if (tab === 'testimonials') { %>
+        <h1>Testimonials</h1>
+        <p class="section-sub">Student quotes shown on the homepage.</p>
+        <% data.testimonials.forEach((t, i) => { %>
+          <form action="/admin/update/testimonial/<%= i %>" method="POST" class="admin-form admin-card">
+            <div class="form-row-split-2">
+              <div class="form-row"><label>Name</label><input type="text" name="name" value="<%= t.name %>"></div>
+              <div class="form-row"><label>Detail (program, university)</label><input type="text" name="detail" value="<%= t.detail %>"></div>
+            </div>
+            <div class="form-row"><label>Quote</label><textarea name="quote" rows="2"><%= t.quote %></textarea></div>
+            <div class="admin-card-actions">
+              <button type="submit" class="btn btn-primary btn-sm">Save</button>
+            </div>
+          </form>
+          <form action="/admin/testimonial/delete/<%= i %>" method="POST" class="admin-card-delete">
+            <button type="submit" class="btn btn-danger btn-sm" onclick="return confirm('Remove this testimonial?')">Remove</button>
+          </form>
+        <% }) %>
+        <form action="/admin/testimonial/add" method="POST">
+          <button type="submit" class="btn btn-ghost">+ Add Testimonial</button>
+        </form>
+      <% } %>
+
+      <% if (tab === 'messages') { %>
+        <h1>Messages</h1>
+        <p class="section-sub">Submissions from the Contact Us form.</p>
+        <% if (messages.length === 0) { %>
+          <p class="empty-state">No messages yet.</p>
+        <% } %>
+        <% messages.forEach(m => { %>
+          <div class="message-card <%= m.read ? '' : 'unread' %>">
+            <div class="message-card-header">
+              <div>
+                <strong><%= m.name %></strong>
+                <span class="message-meta"><%= m.email %><% if (m.phone) { %> &middot; <%= m.phone %><% } %></span>
+              </div>
+              <span class="message-date"><%= new Date(m.createdAt).toLocaleString() %></span>
+            </div>
+            <% if (m.interest) { %><span class="tag tag-progress"><%= m.interest %></span><% } %>
+            <p class="message-body"><%= m.message %></p>
+            <div class="message-actions">
+              <% if (!m.read) { %>
+                <form action="/admin/messages/<%= m.id %>/read" method="POST">
+                  <button type="submit" class="btn btn-ghost btn-sm">Mark as read</button>
+                </form>
+              <% } %>
+              <form action="/admin/messages/<%= m.id %>/delete" method="POST">
+                <button type="submit" class="btn btn-danger btn-sm" onclick="return confirm('Delete this message?')">Delete</button>
+              </form>
+            </div>
+          </div>
+        <% }) %>
+      <% } %>
+
+      <% if (tab === 'settings') { %>
+        <h1>Settings</h1>
+        <p class="section-sub">Logged in as <strong><%= data.brand.name %></strong> administrator.</p>
+        <div class="admin-card">
+          <h3>Change Password</h3>
+          <p class="section-sub">For security, the admin password is stored as a hash in the server's <code>.env</code> file rather than editable here.</p>
+          <form action="/admin/change-password" method="POST">
+            <button type="submit" class="btn btn-ghost">Show Instructions</button>
+          </form>
+        </div>
+      <% } %>
+    </main>
+  </div>
+</body>
+</html>

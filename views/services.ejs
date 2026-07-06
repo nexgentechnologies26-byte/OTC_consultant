@@ -1,0 +1,49 @@
+<section class="page-hero">
+  <div class="container">
+    <span class="eyebrow reveal">Services</span>
+    <h1 class="reveal">Everything between "where do I start" and "I'm boarding"</h1>
+    <p class="section-sub reveal">Pick what you need &mdash; most students end up using all six.</p>
+  </div>
+</section>
+
+<section class="services-full">
+  <div class="container card-grid">
+    <% data.services.forEach(service => { %>
+      <div class="service-card reveal">
+        <div class="service-icon"><%- include('partials/icon', { iconName: service.icon }) %></div>
+        <h3><%= service.title %></h3>
+        <p><%= service.description %></p>
+      </div>
+    <% }) %>
+  </div>
+</section>
+
+<section class="pathway-section">
+  <div class="container">
+    <h2 class="section-heading reveal">How a service engagement runs</h2>
+    <div class="pathway reveal">
+      <svg class="pathway-line" viewBox="0 0 1000 40" preserveAspectRatio="none" aria-hidden="true">
+        <line x1="20" y1="20" x2="980" y2="20" stroke-dasharray="2 10" stroke-linecap="round"/>
+      </svg>
+      <div class="pathway-stops">
+        <% data.process.forEach((step, i) => { %>
+          <div class="pathway-stop">
+            <span class="stop-dot"><%= i + 1 %></span>
+            <h3><%= step.step %></h3>
+            <p><%= step.detail %></p>
+          </div>
+        <% }) %>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="cta-band reveal">
+  <div class="container cta-band-inner">
+    <div>
+      <h2>Ready to start the first step?</h2>
+      <p>Tell us your target country and course &mdash; we'll tell you honestly what's realistic.</p>
+    </div>
+    <a href="/contact" class="btn btn-primary btn-lg">Book Your Free Consultation</a>
+  </div>
+</section>

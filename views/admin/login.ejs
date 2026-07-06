@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title><%= title %></title>
+  <link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,500;9..144,700&family=Work+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="/css/style.css">
+</head>
+<body class="admin-body">
+  <div class="admin-login-wrap">
+    <div class="admin-login-card">
+      <div class="brand admin-login-brand">
+        <span class="brand-mark">PS</span>
+        <span class="brand-name">Admin Panel</span>
+      </div>
+      <h1>Sign in</h1>
+      <p class="section-sub">Manage contact details, services, and content.</p>
+
+      <% if (success && success.length) { %><div class="alert alert-success"><%= success[0] %></div><% } %>
+      <% if (error && error.length) { %><div class="alert alert-error"><%= error[0] %></div><% } %>
+
+      <form action="/admin/login" method="POST" class="contact-form">
+        <div class="form-row">
+          <label for="username">Username</label>
+          <input type="text" id="username" name="username" required autofocus>
+        </div>
+        <div class="form-row">
+          <label for="password">Password</label>
+          <input type="password" id="password" name="password" required>
+        </div>
+        <button type="submit" class="btn btn-primary btn-lg" style="width:100%">Sign In</button>
+      </form>
+      <a href="/" class="link-arrow admin-back-link">&larr; Back to site</a>
+    </div>
+  </div>
+</body>
+</html>

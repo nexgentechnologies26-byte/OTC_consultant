@@ -1,0 +1,128 @@
+<section class="hero">
+  <div class="container hero-inner">
+    <div class="hero-copy reveal">
+      <span class="eyebrow">Since <%= data.about.yearFounded %> &middot; <%= data.about.countriesCovered %> countries</span>
+      <h1><%= data.brand.tagline %></h1>
+      <p class="hero-lede">We're the consultancy that tells you which universities are a realistic reach and which aren't &mdash; then does the paperwork with you, not for you, until the offer letter lands.</p>
+      <div class="hero-actions">
+        <a href="/contact" class="btn btn-primary">Book a Free Consultation</a>
+        <a href="/services" class="btn btn-ghost">See What We Do</a>
+      </div>
+      <div class="hero-stats">
+        <div><strong class="count-up" data-count-target="<%= data.about.studentsPlaced %>" data-suffix="+">0</strong><span>Students placed</span></div>
+        <div><strong class="count-up" data-count-target="<%= data.about.partnerUniversities %>" data-suffix="+">0</strong><span>Partner universities</span></div>
+        <div><strong class="count-up" data-count-target="<%= data.about.visaSuccessRate %>" data-suffix="%">0</strong><span>Visa success rate</span></div>
+      </div>
+    </div>
+
+    <div class="hero-visual reveal">
+      <div class="blob blob-1 drift-slow"></div>
+      <div class="blob blob-2 drift-medium"></div>
+
+      <div class="hero-photo-frame">
+        <img class="hero-photo" src="https://loremflickr.com/640/760/student,travel?lock=101" alt="Student who has been placed abroad through Original Times Consultants" loading="eager">
+        <div class="hero-photo-badge floaty">
+          <strong class="count-up" data-count-target="<%= data.about.visaSuccessRate %>" data-suffix="%">0</strong>
+          <span>Visa success rate</span>
+        </div>
+      </div>
+
+      <svg class="hero-illustration hero-illustration--accent" viewBox="0 0 480 460" fill="none" xmlns="http://www.w3.org/2000/svg" role="img" aria-hidden="true">
+        <g class="plane-wobble" transform="translate(405,70)">
+          <polygon points="0,-16 16,4 2,2 0,16 -2,2 -16,4" fill="var(--coral)"/>
+        </g>
+        <circle cx="150" cy="120" r="4" fill="var(--gold-soft)" class="pulse-dot"/>
+        <circle cx="340" cy="260" r="5" fill="var(--forest-light)" class="pulse-dot" style="animation-delay:0.6s"/>
+        <circle cx="90" cy="240" r="3.5" fill="var(--coral)" class="pulse-dot" style="animation-delay:1.1s"/>
+      </svg>
+    </div>
+  </div>
+</section>
+
+<section class="destinations-strip">
+  <div class="container">
+    <h2 class="section-heading reveal">A few of the places our students call home now</h2>
+    <p class="section-sub reveal">Real campuses, real cities &mdash; the kind of everyday photos we'll swap in from your own student stories.</p>
+    <div class="destinations-grid reveal">
+      <figure class="destinations-photo">
+        <img src="https://loremflickr.com/500/380/london,university?lock=102" alt="University campus, United Kingdom" loading="lazy">
+        <figcaption>United Kingdom</figcaption>
+      </figure>
+      <figure class="destinations-photo">
+        <img src="https://loremflickr.com/500/380/toronto,university?lock=103" alt="University campus, Canada" loading="lazy">
+        <figcaption>Canada</figcaption>
+      </figure>
+      <figure class="destinations-photo">
+        <img src="https://loremflickr.com/500/380/sydney,university?lock=104" alt="University campus, Australia" loading="lazy">
+        <figcaption>Australia</figcaption>
+      </figure>
+    </div>
+  </div>
+</section>
+
+<section class="pathway-section">
+  <div class="container">
+    <h2 class="section-heading reveal">The route we walk with every student</h2>
+    <p class="section-sub reveal">Five stops, always in this order. Skipping one is usually where applications go wrong.</p>
+
+    <div class="pathway reveal">
+      <svg class="pathway-line" viewBox="0 0 1000 40" preserveAspectRatio="none" aria-hidden="true">
+        <line x1="20" y1="20" x2="980" y2="20" stroke-dasharray="2 10" stroke-linecap="round"/>
+      </svg>
+      <div class="pathway-stops">
+        <% data.process.forEach((step, i) => { %>
+          <div class="pathway-stop">
+            <span class="stop-dot"><%= i + 1 %></span>
+            <h3><%= step.step %></h3>
+            <p><%= step.detail %></p>
+          </div>
+        <% }) %>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="services-preview">
+  <div class="container">
+    <div class="section-header-row reveal">
+      <div>
+        <h2 class="section-heading">What we help you with</h2>
+        <p class="section-sub">From the first shortlist to the day you land.</p>
+      </div>
+      <a href="/services" class="link-arrow">All services &rarr;</a>
+    </div>
+    <div class="card-grid">
+      <% data.services.slice(0, 6).forEach(service => { %>
+        <div class="service-card reveal">
+          <div class="service-icon"><%- include('partials/icon', { iconName: service.icon }) %></div>
+          <h3><%= service.title %></h3>
+          <p><%= service.description %></p>
+        </div>
+      <% }) %>
+    </div>
+  </div>
+</section>
+
+<section class="testimonials-section">
+  <div class="container">
+    <h2 class="section-heading reveal">Told in their own words</h2>
+    <div class="testimonial-grid">
+      <% data.testimonials.forEach(t => { %>
+        <blockquote class="testimonial-card reveal">
+          <p>&ldquo;<%= t.quote %>&rdquo;</p>
+          <footer><strong><%= t.name %></strong><span><%= t.detail %></span></footer>
+        </blockquote>
+      <% }) %>
+    </div>
+  </div>
+</section>
+
+<section class="cta-band reveal">
+  <div class="container cta-band-inner">
+    <div>
+      <h2>Not sure where to start?</h2>
+      <p>A 30-minute call is usually enough to tell you if your plan is realistic.</p>
+    </div>
+    <a href="/contact" class="btn btn-primary btn-lg">Book Your Free Consultation</a>
+  </div>
+</section>

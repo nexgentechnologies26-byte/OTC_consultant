@@ -1,0 +1,29 @@
+<header class="site-header">
+  <div class="container header-inner">
+    <a href="/" class="brand">
+      <% if (data.brand.logoUrl) { %>
+        <img class="brand-logo-img" src="<%= data.brand.logoUrl %>" alt="<%= data.brand.name %> logo">
+      <% } else { %>
+        <span class="brand-mark"><%= data.brand.logoInitials %></span>
+      <% } %>
+      <span class="brand-name"><%= data.brand.name %></span>
+    </a>
+
+    <nav class="main-nav" id="main-nav">
+      <a href="/" class="<%= page === 'home' ? 'active' : '' %>">Home</a>
+      <a href="/about" class="<%= page === 'about' ? 'active' : '' %>">About Us</a>
+      <a href="/services" class="<%= page === 'services' ? 'active' : '' %>">Services</a>
+      <a href="/contact" class="<%= page === 'contact' ? 'active' : '' %>">Contact Us</a>
+    </nav>
+
+    <div class="header-actions">
+      <a href="tel:<%= data.contact.phone.replace(/\s/g,'') %>" class="header-phone">
+        <%= data.contact.phone %>
+      </a>
+      <a href="/contact" class="btn btn-primary btn-sm">Free Consultation</a>
+      <button class="nav-toggle" id="nav-toggle" aria-label="Toggle menu" aria-expanded="false">
+        <span></span><span></span><span></span>
+      </button>
+    </div>
+  </div>
+</header>

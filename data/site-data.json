@@ -1,0 +1,122 @@
+{
+  "brand": {
+    "name": "Original Times consultation",
+    "tagline": "Your route from ambition to admission",
+    "logoInitials": "OTC",
+    "logoUrl": ""
+  },
+  "contact": {
+    "phone": "+92 311 6278283",
+    "whatsapp": "+92 311 6278283",
+    "email": "smyibukhari@gmail.com",
+    "address": "3rd Floor, Blue Horizon Tower, Blue Area, Islamabad, Pakistan",
+    "officeHours": "Mon - Sat, 10:00 AM - 7:00 PM",
+    "mapEmbedUrl": "https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d13273.0!2d73.0479!3d33.6844!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x0%3A0x0!2zMzPCsDQxJzAzLjgiTiA3M8KwMDInNTIuNCJF!5e0!3m2!1sen!2s!4v1620000000000",
+    "facebook": "https://www.facebook.com/share/18hrBdkrHM/",
+    "instagram": "https://www.instagram.com/bukhari_1272?igsh=aXRiM250cTRtMWw2",
+    "linkedin": "https://linkedin.com/company/pathwayconsultants"
+  },
+  "about": {
+    "heading": "We've walked international students through the door before",
+    "story": "Original Times Consultants was founded in 2014 by a small group of former international students who remembered exactly how confusing the process felt the first time around. What started as informal advice sessions in a shared office has grown into a full consultancy trusted by thousands of families, without losing the one-on-one attention that made it work in the first place.",
+    "mission": "To make world-class education abroad a realistic, well-planned decision for every student we work with, not a stroke of luck.",
+    "yearFounded": 2014,
+    "studentsPlaced": 4200,
+    "partnerUniversities": 180,
+    "countriesCovered": 14,
+    "visaSuccessRate": 96,
+    "team": [
+      {
+        "name": "Ayesha Raza",
+        "role": "Founder & Lead Counselor",
+        "bio": "MSc Education, University of Manchester. 12 years guiding students through UK & EU admissions."
+      },
+      {
+        "name": "Bilal Haider",
+        "role": "Visa & Documentation Head",
+        "bio": "Former visa officer consultant, specializes in US and Canada study permits."
+      },
+      {
+        "name": "Sana Tariq",
+        "role": "Test Prep Director",
+        "bio": "IELTS/GRE trainer with a decade of classroom and online coaching experience."
+      },
+      {
+        "name": "Omar Farooq",
+        "role": "Scholarships Advisor",
+        "bio": "Helped students secure over $2M in combined scholarship funding since 2018."
+      }
+    ]
+  },
+  "services": [
+    {
+      "title": "University & Course Selection",
+      "description": "We shortlist universities and programs that actually fit your grades, budget, and career goals, not just the popular names.",
+      "icon": "compass"
+    },
+    {
+      "title": "Application & SOP Support",
+      "description": "Hands-on help with applications, statements of purpose, and letters of recommendation that sound like you, not a template.",
+      "icon": "document"
+    },
+    {
+      "title": "Test Preparation",
+      "description": "Structured IELTS, PTE, GRE, and SAT coaching in small batches, with practice tests scored the same way the real exam is.",
+      "icon": "book"
+    },
+    {
+      "title": "Visa Filing & Interview Coaching",
+      "description": "Document checklists, mock interviews, and filing support for the US, UK, Canada, Australia, and Europe.",
+      "icon": "passport"
+    },
+    {
+      "title": "Scholarship Guidance",
+      "description": "We identify scholarships you're eligible for and help you build a competitive, honest case for funding.",
+      "icon": "award"
+    },
+    {
+      "title": "Pre-Departure Briefing",
+      "description": "Housing, flights, banking, and what to actually pack, from people who have sent thousands of students off before you.",
+      "icon": "plane"
+    }
+  ],
+  "process": [
+    {
+      "step": "Explore",
+      "detail": "Free first consultation to understand your goals, budget, and academic profile."
+    },
+    {
+      "step": "Shortlist",
+      "detail": "We build a shortlist of realistic universities and programs together with you."
+    },
+    {
+      "step": "Apply",
+      "detail": "Applications, essays, and documents are prepared, reviewed, and submitted on time."
+    },
+    {
+      "step": "Prepare",
+      "detail": "Test prep, visa filing, and interview coaching once your offer is in hand."
+    },
+    {
+      "step": "Fly",
+      "detail": "Pre-departure briefing and ongoing support during your first months abroad."
+    }
+  ],
+  "testimonials": [
+    {
+      "name": "Hina Malik",
+      "detail": "MSc Data Science, University of Leeds",
+      "quote": "They told me honestly which universities were a stretch and which were realistic. That honesty is why I trusted the whole process."
+    },
+    {
+      "name": "Ahmed Zaidi",
+      "detail": "BSc Computer Science, University of Toronto",
+      "quote": "My visa was filed without a single follow-up request from the embassy. Every document was exactly where it needed to be."
+    },
+    {
+      "name": "Fatima Noor",
+      "detail": "MBA, ESSEC Business School",
+      "quote": "The scholarship guidance alone covered half my tuition. I would not have found that program on my own."
+    }
+  ]
+}
