@@ -17,9 +17,18 @@
     </div>
   </div>
   <div class="container about-photo-strip reveal">
-    <img src="https://loremflickr.com/380/280/consultation,office?lock=105" alt="Consultation session with a student" loading="lazy">
-    <img src="https://loremflickr.com/380/280/student,documents?lock=106" alt="Student reviewing university offer letters" loading="lazy">
-    <img src="https://loremflickr.com/380/280/graduation,cap?lock=107" alt="Graduation day for a placed student" loading="lazy">
+    <figure>
+      <img src="https://images.unsplash.com/photo-1530099486328-e021101a494a?auto=format&fit=crop&w=800&q=80" alt="Consultation session with a student" loading="lazy">
+      <figcaption>A one-on-one consultation session</figcaption>
+    </figure>
+    <figure>
+      <img src="https://images.unsplash.com/photo-1775163024488-e88e4a71179f?auto=format&fit=crop&w=800&q=80" alt="Student reviewing university offer letters" loading="lazy">
+      <figcaption>Reviewing offer letters together</figcaption>
+    </figure>
+    <figure>
+      <img src="https://images.unsplash.com/photo-1759328381007-64559a862aa6?auto=format&fit=crop&w=800&q=80" alt="Graduation day for a placed student" loading="lazy">
+      <figcaption>Graduation day, the goal all along</figcaption>
+    </figure>
   </div>
 </section>
 
@@ -67,10 +76,18 @@
     <h2 class="section-heading reveal">Who you'll actually talk to</h2>
     <p class="section-sub reveal">A small, senior team &mdash; you won't be handed off to someone new each visit.</p>
     <div class="team-grid">
+      <%
+        const teamPhotos = [
+          'https://images.unsplash.com/photo-1627161683077-e34782c24d81?auto=format&fit=crop&w=200&q=80',
+          'https://images.unsplash.com/photo-1629425733761-caae3b5f2e50?auto=format&fit=crop&w=200&q=80',
+          'https://images.unsplash.com/photo-1580489944761-15a19d654956?auto=format&fit=crop&w=200&q=80',
+          'https://images.unsplash.com/photo-1595211877493-41a4e5f236b3?auto=format&fit=crop&w=200&q=80'
+        ];
+      %>
       <% data.about.team.forEach((member, i) => { %>
         <div class="team-card reveal">
           <div class="team-avatar">
-            <img src="https://loremflickr.com/160/160/portrait,professional?lock=<%= 200 + i %>" alt="<%= member.name %>" loading="lazy">
+            <img src="<%= teamPhotos[i % teamPhotos.length] %>" alt="<%= member.name %>" loading="lazy">
           </div>
           <h3><%= member.name %></h3>
           <span class="team-role"><%= member.role %></span>
